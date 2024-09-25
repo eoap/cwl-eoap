@@ -3,7 +3,7 @@ site_name: CWL as a solution for Earth Observation portability
 theme:
     logo: assets/icon-eoap.png
     name: material
-
+    custom_dir: 'overrides'
     palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -67,4 +67,5 @@ nav:
     - Application Best Practices: 'best-practice/application.md'
     - Package Best Practices: 'best-practice/package.md'
 
-copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>
+#copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>
+#copyright: [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
