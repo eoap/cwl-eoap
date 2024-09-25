@@ -1,4 +1,4 @@
-# The Application Package and CWL as a solution for Earth Observation portability
+# Application Package and CWL as a solution for Earth Observation portability
 
 The Application Package is a document that describes the data processing application by providing information about the parameters, software item, executable, dependencies and metadata. 
 
