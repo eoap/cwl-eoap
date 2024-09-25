@@ -49,7 +49,7 @@ extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  
+
 
 nav:
   - Introduction: 'index.md'
@@ -66,3 +66,5 @@ nav:
   - Best Practices:
     - Application Best Practices: 'best-practice/application.md'
     - Package Best Practices: 'best-practice/package.md'
+
+copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>
