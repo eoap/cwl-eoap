@@ -66,3 +66,7 @@ nav:
   - Best Practices:
     - Application Best Practices: 'best-practice/application.md'
     - Package Best Practices: 'best-practice/package.md'
+
+copyright: Maintained by Terradue
+#copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>
+# copyright: Copyright &copy; 2014 <a href="https://twitter.com/starletdreaming">Tom Christie</a>, Maintained by the <a href="/about/release-notes/#maintenance-team">MkDocs Team</a>.
