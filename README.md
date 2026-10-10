@@ -21,3 +21,16 @@ This repository includes the OGC activities that lead to the adoption of the CWL
 The webpage of the documentation is https://eoap.github.io/cwl-eoap/. 
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+## Typed CWL and PDE validation
+
+Application packages use CWL v1.2, embedded URI records, described ports and
+Schema.org repository/version/license/author metadata. Generate and validate
+standalone documentation with `python scripts/cwl-docs.py --validate`.
+The PDE deployment and executable lab tasks are in the sibling
+`dev-platform-eoap/cwl-eoap` folder. Feature-branch changes must be published
+or copied into its retained workspace before deployment.
+
+All three notebooks passed on AMD64 Kubernetes on 11 October 2026. The Python
+lab asserts successful CLI execution and a raster result; container labs use
+the current user's UID/GID, and the package lab exercises typed URI job files.
+The rasterio container installs its required native libexpat library.

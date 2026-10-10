@@ -1,25 +1,47 @@
 cwlVersion: v1.2
-
-# What type of CWL process we have in this document.
 class: CommandLineTool
-# This CommandLineTool executes the rasterio "rio" command-line tool.
 baseCommand: rio
-# The arguments for this process
-arguments: 
+arguments:
 - bounds
-# The inputs for this process.
 inputs:
   geotiff:
-    type: string
-    # A default value that can be overridden, e.g. --geotiff "<another url>"
-    default: "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/10/T/FK/2021/7/S2B_10TFK_20210713_0_L2A/TCI.tif"
-    # Bind this message value as an argument to "rio".
+    type: '#URI'
+    default:
+      value: https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/10/T/FK/2021/7/S2B_10TFK_20210713_0_L2A/TCI.tif
     inputBinding:
       position: 1
-outputs: []
-
+      valueFrom: $(self.value)
+    label: geotiff
+    doc: geotiff.
+outputs:
+  bounds:
+    type: File
+    label: Raster bounds
+    doc: GeoJSON raster bounds.
+    outputBinding:
+      glob: bounds.json
 requirements:
-    DockerRequirement:
-        dockerPull: localhost/rio:latest
-    NetworkAccess:
-        networkAccess: true
+  DockerRequirement:
+    dockerPull: localhost/rio:latest
+  NetworkAccess:
+    networkAccess: true
+  InlineJavascriptRequirement: {}
+  SchemaDefRequirement:
+    types:
+    - name: '#URI'
+      type: record
+      fields:
+      - name: value
+        type: string
+$namespaces:
+  s: https://schema.org/
+s:softwareVersion: 1.0.0
+s:codeRepository: https://github.com/eoap/cwl-eoap
+s:license: https://spdx.org/licenses/CC-BY-SA-4.0.html
+s:author:
+- class: s:Person
+  s:name: Fabrice Brito
+  s:email: fabrice.brito@terradue.com
+label: quick-start
+doc: 'cwl-eoap: quick-start.'
+stdout: bounds.json
