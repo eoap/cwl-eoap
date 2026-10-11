@@ -4,6 +4,12 @@ from pathlib import Path
 import yaml
 
 
+APPROVED_SCHEMA_IMPORTS = {
+    "https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml",
+    "https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml",
+}
+
+
 def render(path):
     document = yaml.safe_load(path.read_text())
     assert document['cwlVersion'] == 'v1.2', path
@@ -14,7 +20,7 @@ def render(path):
         if isinstance(value, dict):
             assert '$include' not in value, f'{path}: external include'
             if '$import' in value:
-                assert value['$import'] == 'https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml', f'{path}: unapproved schema import'
+                assert value['$import'] in APPROVED_SCHEMA_IMPORTS, f'{path}: unapproved schema import'
             for child in value.values(): check(child)
         elif isinstance(value, list):
             for child in value: check(child)
@@ -49,7 +55,7 @@ def render(path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--validate', action='store_true', help='Also validate isolated CWL, allowing the approved OGC schema import')
+    parser.add_argument('--validate', action='store_true', help='Also validate isolated CWL, allowing approved EOAP schema imports')
     parser.add_argument('--output', type=Path, default=Path('/tmp/stac-cwl-docs'))
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
@@ -63,9 +69,9 @@ if __name__ == '__main__':
             from cwltool.main import main
             original_request = requests.sessions.Session.request
             def blocked_request(session, method, url, **kwargs):
-                if url.split('#')[0] == 'https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml':
+                if url.split('#')[0] in APPROVED_SCHEMA_IMPORTS:
                     return original_request(session, method, url, **kwargs)
-                raise RuntimeError('Only the approved OGC schema may be fetched')
+                raise RuntimeError('Only approved EOAP schemas may be fetched')
             requests.sessions.Session.request = blocked_request
             try:
                 with tempfile.TemporaryDirectory() as isolated:
