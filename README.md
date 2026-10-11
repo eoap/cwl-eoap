@@ -21,6 +21,32 @@ The site includes the current job-file example directly from `notebooks/inputs.y
 
 ## Typed CWL and PDE validation
 
+The notebook environment targets Python 3.12. `requirements-notebooks.in`
+records the PDE's direct dependencies; `requirements-notebooks.txt` locks all
+resolved packages and their hashes. Podman remains a system dependency.
+
+Install the environment and register both notebook kernels:
+
+```sh
+uv venv --python 3.12 .venv
+uv pip sync --python .venv/bin/python --require-hashes requirements-notebooks.txt
+.venv/bin/python -m ipykernel install --user --name cwl_env --display-name "Python (cwl-eoap)"
+.venv/bin/python -m bash_kernel.install
+source .venv/bin/activate
+```
+
+Refresh the lock deliberately, then execute all three notebooks before accepting
+the new versions:
+
+```sh
+uv pip compile requirements-notebooks.in --python-version 3.12 --generate-hashes --upgrade --output-file requirements-notebooks.txt
+```
+
+The sibling PDE's `cwl-eoap/files/init.sh` uses Python 3.12 and installs this
+lock with `uv pip sync --require-hashes`, retaining its kernel registration and
+PATH setup. Publish the lock with the training source or copy it into the PDE
+workspace before deploying the updated initialization script.
+
 Application packages use CWL v1.2, shared remote URI schemas, described ports and
 Schema.org repository/version/license/author metadata. Generate and validate
 standalone documentation with `python scripts/cwl-docs.py --validate`.
