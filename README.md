@@ -58,3 +58,21 @@ All three notebooks passed on AMD64 Kubernetes on 11 October 2026. The Python
 lab asserts successful CLI execution and a raster result; container labs use
 the current user's UID/GID, and the package lab exercises typed URI job files.
 The rasterio container installs its required native libexpat library.
+
+## Release acceptance
+
+The `Notebook acceptance` workflow installs the hash-locked Python 3.12
+notebook environment and Podman, validates the standalone CWL and generated
+Markdown, executes all three notebooks with real EO inputs, and builds the
+site strictly. Executed notebooks and documentation are retained as CI artifacts.
+Run the same notebooks locally with:
+
+```sh
+source .venv/bin/activate
+python scripts/run-notebooks.py --workspace "$PWD" --notebooks-dir notebooks --python-kernel cwl_env --output /tmp/cwl-eoap-acceptance
+```
+
+Notebook cells deliberately generate files and build local teaching containers.
+Start acceptance from a clean checkout of the intended release commit. Release
+promotion requires successful acceptance of that commit; the CWL currently
+identifies the module version as `1.0.0`.
