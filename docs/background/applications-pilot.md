@@ -1,6 +1,10 @@
+# The EO Applications Pilot · historical context
+
+This page describes the origins of EOAP. For current adoption and the introductory lesson, start with [EOAP in 20 minutes](../index.md).
+
 The OGC Innovation Program's Earth Observation Applications Pilot, conducted between December 2019 and July 2020, investigated the software architecture initially developed through OGC Testbeds 13-15. This architecture facilitated the deployment and execution of externally developed applications on Earth Observation (EO) data and processing platforms.
 
-The pilot program served as an evaluation of the interoperability frameworks previously established in OGC Testbeds 13 to 15, proving to be a foundational step for conducting maturity assessments within operational environments. During the pilot, further enhancements and precise definitions were crafted, which refined the process for deploying and executing applications across a variety of platforms with nly minimal modifications required.
+The pilot program served as an evaluation of the interoperability frameworks previously established in OGC Testbeds 13 to 15, proving to be a foundational step for conducting maturity assessments within operational environments. During the pilot, further enhancements and precise definitions were crafted, which refined the process for deploying and executing applications across a variety of platforms with only minimal modifications required.
 
 The Pilot validated the strategy of using Docker for secure and efficient application packaging, and HTTP Web APIs or Web Services for managing and executing applications. Moreover, the pilot defined clear application patterns that govern data inputs and outputs, reinforced the use of the Common Workflow Language (CWL) for detailed application description, execution, and workflow construction. It also endorsed the adoption of the SpatioTemporal Asset Catalog (STAC) to serve as a comprehensive data manifest, delineating the necessary inputs and outputs for applications. These advancements collectively enhance the deployment flexibility and interoperability of applications within diverse EO data ecosystems.
 

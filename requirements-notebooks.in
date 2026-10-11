@@ -1,0 +1,18 @@
+# Notebook environment shared by CI and the EOEPCA PDE.
+# Keep aligned with dev-platform-eoap/cwl-eoap/files/init.sh.
+# Target Python 3.12; Podman is a separate system dependency.
+PyYAML
+rasterio
+requests
+pystac
+click
+loguru
+pyproj
+shapely
+ipykernel
+nbclient
+nbformat
+bash_kernel
+check-jsonschema
+yq
+cwltool

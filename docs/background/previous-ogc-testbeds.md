@@ -1,3 +1,7 @@
+# Previous OGC testbeds · historical context
+
+This page describes the origins of EOAP. For current adoption and the introductory lesson, start with [EOAP in 20 minutes](../index.md).
+
 The OGC initiatives in Testbed-13, Testbed-14, and Testbed-15 have pioneered the development of an advanced architectural framework designed to facilitate the ad-hoc deployment and execution of applications proximate to the data source. This strategic positioning minimizes data transfer, enhancing efficiency between data repositories and application processes.
 
 These testbeds laid the foundational design for an architecture that supports the encapsulation, deployment, and execution of Earth Observation Applications across distributed Cloud Platforms. This framework ensures that applications are efficiently integrated and managed within cloud environments, providing scalable solutions for Earth Observation data processing.

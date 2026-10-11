@@ -1,59 +1,23 @@
-# Application Best Practice
+# Prepare the application
 
-An Application that complies with the Best Practice for Earth Observation Application Package needs to be:
+This is an optional reference after the [20-minute introduction](../index.md). Start with a command that accepts explicit arguments, runs without prompts, returns a failure status on errors and writes outputs to its working directory.
 
-* Executable as a command-line tool.
-* Delivered in a container image with all the necessary software, libraries and configuration files.
+## Bundle its software
 
-Here we describe the best practices for Earth Observation applications:
+A container image includes the executable and its runtime dependencies. The container notebook uses Python 3.12, pinned Python dependencies and the native `libexpat1` library needed by its rasterio environment:
 
-* the command line tools
-* how to consider input data, output data 
-* how to create a containers
-
-## Command line
-
-The Application is executed as a command-line interface (CLI) tool that runs as a non-interactive executable program: it receives input arguments, performs a computation, and terminates after producing some output.
-
-The Application can have any number of command-line arguments.
-
-When executed, the Application working directory is also the Application output directory. Any file created by the Application should be added under that directory.
-
-### Hands-on
-
-Open the notebook **01 Command line**
-
-## Container
-
-The environment, libraries, binaries and configuration files necessary to execute the command-line tools need to be bundled in a container image.
-
-The example below shows how Docker, one of the available container engine solutions to deliver software in containers, defines all the necessary commands to assemble an image:
-
-```
-FROM docker.io/python:3.10-slim
-
-RUN pip install --no-cache-dir rasterio click pystac loguru pyproj shapely && \
-    python -c "import rasterio"
-
+```dockerfile
+FROM docker.io/python:3.12-slim
+RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir rasterio==1.5.1 click==8.4.1 pystac==1.15.2 loguru==0.7.3 pyproj==3.7.2 shapely==2.1.2 && python -c "import rasterio"
 ADD app.py /app/app.py
-
 ENTRYPOINT []
 ```
 
-### Hands-on
+The notebook creates `app.py` before building this image. This cropping application is distinct from the smaller `rio bounds` example.
 
-Open the notebook **02 Container**
+## Make execution repeatable
 
-## Requirement classes
+Use explicit inputs, write results under the current working directory and avoid relying on host-specific paths. Test with the intended user permissions. Publish shared images to an accessible registry and record an image digest for reproducible releases. Supply data credentials through the execution environment rather than embedding them in an image.
 
-**Requirement 1** req/app/cmd-line
-
-_The Application SHALL be a non-interactive executable as a command-line application._
-
-**Requirement 2** req/app/container
-
-_The environment, libraries, binaries, executable and configuration files necessary to execute the Application SHALL be bundled in a container image._
-
-**Requirement 3** req/app/registry
-
-_The Application container image SHALL be accessible in a container registry._
+Practise with [01 Command line](https://github.com/eoap/cwl-eoap/blob/main/notebooks/01%20Command%20line.ipynb) and [02 Container](https://github.com/eoap/cwl-eoap/blob/main/notebooks/02%20Container.ipynb). For the normative command-line, container and registry requirements, read the [OGC Best Practice](https://docs.ogc.org/bp/20-089r1.html).
