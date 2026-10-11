@@ -1,0 +1,1026 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cwl/nutshell/">
+      
+      
+        <link rel="next" href="../usage-scenarios/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Trace the example · 8 min - EO Application Packages in 20 minutes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trace-an-application-package-8-minutes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="EO Application Packages in 20 minutes" class="md-header__button md-logo" aria-label="EO Application Packages in 20 minutes" data-md-component="logo">
+      
+  <img src="../assets/icon-eoap.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EO Application Packages in 20 minutes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Trace the example · 8 min
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EO Application Packages in 20 minutes" class="md-nav__button md-logo" aria-label="EO Application Packages in 20 minutes" data-md-component="logo">
+      
+  <img src="../assets/icon-eoap.png" alt="logo">
+
+    </a>
+    EO Application Packages in 20 minutes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start here · 20 minutes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cwl/nutshell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The building blocks · 4 min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trace the example · 8 min
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trace the example · 8 min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-find-the-public-interface-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Find the public interface · 2 minutes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-supply-a-value-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Supply a value · 2 minutes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-follow-the-command-and-output-3-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Follow the command and output · 3 minutes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-identify-the-environment-1-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Identify the environment · 1 minute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-execute-the-example-after-the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: execute the example after the lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build, deploy and run · 3 min
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Optional reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML in one minute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../best-practice/application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prepare the application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../best-practice/package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prepare the package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cwl/cwl-eoap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How CWL fits EOAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    History and standards
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    History and standards
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From pilots to wider use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/previous-ogc-testbeds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previous OGC testbeds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/applications-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EO Applications Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/eoap-best-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OGC Best Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-find-the-public-interface-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Find the public interface · 2 minutes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-supply-a-value-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Supply a value · 2 minutes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-follow-the-command-and-output-3-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Follow the command and output · 3 minutes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-identify-the-environment-1-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Identify the environment · 1 minute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-execute-the-example-after-the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: execute the example after the lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="trace-an-application-package-8-minutes">Trace an application package · 8 minutes</h1>
+<p>Open <a href="https://github.com/eoap/cwl-eoap/blob/main/notebooks/quick-start.cwl">quick-start.cwl</a> and <a href="https://github.com/eoap/cwl-eoap/blob/main/notebooks/inputs.yaml">inputs.yaml</a> in the repository's <code>notebooks/</code> directory. The snippets below explain selected parts of those files; they are not complete standalone packages.</p>
+<h2 id="1-find-the-public-interface-2-minutes">1. Find the public interface · 2 minutes</h2>
+<p>The CWL document declares <code>cwlVersion: v1.2</code>. Its <code>$graph</code> contains a <code>Workflow</code> with <code>id: main</code> and a <code>CommandLineTool</code> with <code>id: rio-bounds</code>.</p>
+<p>The workflow accepts <code>geotiff</code> and returns <code>bounds</code>. Its input uses a record type named <code>URI</code>, imported from the shared EOAP schemas:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">geotiff</span><span class="p">:</span>
+</span><span id="__span-0-2"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI</span>
+</span><span id="__span-0-3"><span class="w">  </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GeoTIFF URI</span>
+</span><span id="__span-0-4"><span class="w">  </span><span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI of the GeoTIFF whose bounding geometry will be returned.</span>
+</span></code></pre></div>
+<p>The record has one string field, <code>value</code>. It comes from the remote <code>string_format.yaml</code> schema imported by both the workflow and tool:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">SchemaDefRequirement</span><span class="p">:</span>
+</span><span id="__span-1-2"><span class="w">  </span><span class="nt">types</span><span class="p">:</span>
+</span><span id="__span-1-3"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">$import</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml</span>
+</span></code></pre></div>
+<p>This shared URI convention is also used in the mastering-app-package module; it is not a built-in CWL type or a universal requirement for every EOAP. Resolving the package requires access to the remote schema. Native <code>File</code> and <code>Directory</code> types have different staging semantics: the runner manages files or directories, whereas this tool reads the URI itself.</p>
+<h2 id="2-supply-a-value-2-minutes">2. Supply a value · 2 minutes</h2>
+<p>The job file contains:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">geotiff</span><span class="p">:</span>
+</span><span id="__span-2-2"><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/10/T/FK/2021/7/S2B_10TFK_20210713_0_L2A/B02.tif</span>
+</span></code></pre></div>
+<p>The nesting matters: <code>geotiff</code> receives a record containing <code>value</code>, not a bare URL string. The package also has a default GeoTIFF URI, so a job file can be omitted for the default run.</p>
+<p><strong>Try it on paper:</strong> change <code>B02.tif</code> to <code>B01.tif</code> in a copy of the job. Which file describes the new execution? The job file; the application package stays the same.</p>
+<h2 id="3-follow-the-command-and-output-3-minutes">3. Follow the command and output · 3 minutes</h2>
+<p>The workflow connects its input to the tool:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">steps</span><span class="p">:</span>
+</span><span id="__span-3-2"><span class="w">  </span><span class="nt">bounds</span><span class="p">:</span>
+</span><span id="__span-3-3"><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="s">'#rio-bounds'</span>
+</span><span id="__span-3-4"><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+</span><span id="__span-3-5"><span class="w">      </span><span class="nt">geotiff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geotiff</span>
+</span><span id="__span-3-6"><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">bounds</span><span class="p p-Indicator">]</span>
+</span></code></pre></div>
+<p>The tool uses <code>baseCommand: rio</code> and <code>arguments: [bounds]</code>. Its binding extracts the URL:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><span class="nt">inputBinding</span><span class="p">:</span>
+</span><span id="__span-4-2"><span class="w">  </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-4-3"><span class="w">  </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(self.value)</span>
+</span></code></pre></div>
+<p>Together these construct <code>rio bounds &lt;GeoTIFF-URL&gt;</code>. The tool's <code>stdout: bounds.json</code> captures the command's output. Its <code>outputBinding.glob: bounds.json</code> collects that file, and the workflow's <code>outputSource: bounds/bounds</code> exposes it to the caller.</p>
+<p>The result is GeoJSON describing the raster's bounding geometry. This example reads raster metadata; it does not produce a cropped raster. The cropping notebooks are a separate, longer exercise.</p>
+<h2 id="4-identify-the-environment-1-minute">4. Identify the environment · 1 minute</h2>
+<p>Find <code>DockerRequirement.dockerPull</code>, <code>NetworkAccess</code> and the <code>s:</code> metadata in the complete file. The image supplies <code>rio</code>; network access allows the remote GeoTIFF to be read; metadata identifies the application, author, version, license and documentation.</p>
+<p>The image <code>localhost/rio:latest</code> is built locally for this lesson. A shared deployment needs an image reference the target platform can retrieve, preferably pinned to a digest.</p>
+<p>Continue to <a href="../usage-scenarios/">build, deploy and run</a>, then return for the final two-minute check.</p>
+<h2 id="check-your-understanding">Check your understanding</h2>
+<p>Answer without running anything:</p>
+<ol>
+<li>Which class exposes the application's public inputs and outputs?</li>
+<li>What command runs when <code>geotiff.value</code> is supplied?</li>
+<li>How does <code>bounds.json</code> become a workflow result?</li>
+<li>Can a cloud platform retrieve an image built only on your laptop?</li>
+</ol>
+<details class="success">
+<summary>Check your answers</summary>
+<ol>
+<li>The <code>Workflow</code> named <code>main</code>.</li>
+<li><code>rio bounds &lt;the supplied URL&gt;</code> inside the selected container.</li>
+<li><code>stdout</code> creates it, the tool collects it with <code>glob</code>, and the workflow exposes it through <code>outputSource</code>.</li>
+<li>The platform needs an accessible registry image or an explicitly supported image-loading mechanism.</li>
+</ol>
+</details>
+<p>You have finished the core lesson when you can explain <strong>input → workflow → container command → output</strong> and name one platform dependency.</p>
+<h2 id="optional-execute-the-example-after-the-lesson">Optional: execute the example after the lesson</h2>
+<p>Allow extra time for installation, image download and network access. You need <code>cwltool</code>, Podman and access to the sample GeoTIFF. In a terminal, start at the repository root:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><span class="nb">cd</span><span class="w"> </span>notebooks
+</span><span id="__span-5-2">cwltool<span class="w"> </span>--validate<span class="w"> </span>quick-start.cwl
+</span></code></pre></div>
+<p>Build the lesson image from a separate Dockerfile; the tracked <code>notebooks/Dockerfile</code> is a different GDAL-based example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1">cat<span class="w"> </span>&gt;<span class="w"> </span>Dockerfile.rio<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
+</span><span id="__span-6-2"><span class="s">FROM docker.io/python:3.12-slim</span>
+</span><span id="__span-6-3"><span class="s">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends libexpat1 &amp;&amp; rm -rf /var/lib/apt/lists/*</span>
+</span><span id="__span-6-4"><span class="s">RUN pip install --no-cache-dir rasterio==1.5.1 click==8.4.1</span>
+</span><span id="__span-6-5"><span class="s">ENTRYPOINT []</span>
+</span><span id="__span-6-6"><span class="s">EOF</span>
+</span><span id="__span-6-7">podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>localhost/rio:latest<span class="w"> </span>-f<span class="w"> </span>Dockerfile.rio<span class="w"> </span>.
+</span><span id="__span-6-8">cwltool<span class="w"> </span>--podman<span class="w"> </span>--outdir<span class="w"> </span>results<span class="w"> </span>quick-start.cwl<span class="w"> </span>inputs.yaml
+</span></code></pre></div>
+<p>A successful run reports the <code>bounds</code> output and writes <code>results/bounds.json</code>. Inspect that file for GeoJSON geometry. Image failures usually indicate a missing local image; remote-read failures require checking the URL and network access.</p>
+<p>For further practice, open <a href="https://github.com/eoap/cwl-eoap/blob/main/notebooks/01%20Command%20line.ipynb">01 Command line</a>, <a href="https://github.com/eoap/cwl-eoap/blob/main/notebooks/02%20Container.ipynb">02 Container</a>, then <a href="https://github.com/eoap/cwl-eoap/blob/main/notebooks/03%20Package.ipynb">03 Package</a>. These are optional labs outside the 20-minute route.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
