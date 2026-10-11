@@ -1,4 +1,4 @@
-site_name: CWL as a solution for Earth Observation portability
+site_name: EO Application Packages in 20 minutes
 
 theme:
     logo: assets/icon-eoap.png
@@ -30,7 +30,6 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.superfences:
       custom_fences:
@@ -42,28 +41,22 @@ markdown_extensions:
       base_path: './'
   - pymdownx.highlight:
       line_spans: __span
-extra_css:
-  - styles/css/app.css
-  
-extra_javascript:
-  - javascripts/config.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 
 nav:
-  - Introduction: 'index.md'
-  - Background: 
-    - Introduction: 'background/background.md'
-    - Previous OGC Testbeds: 'background/previous-ogc-testbeds.md'
-    - OGC EO Applications Pilot: 'background/applications-pilot.md'
-    - Best Practice for EO Application Package: 'background/eoap-best-practice.md'
-  - Common Workflow Language: 
-    - CWL in a nutshell: 'cwl/nutshell.md'
-    - CWL in the Best Practice for EO Application Package: 'cwl/cwl-eoap.md'
-  - Understanding YAML syntax: 'yaml.md'
-  - Usage Scenarios: 'usage-scenarios.md'
-  - Best Practices:
-    - Application Best Practices: 'best-practice/application.md'
-    - Package Best Practices: 'best-practice/package.md'
+  - Start here · 20 minutes: index.md
+  - The building blocks · 4 min: cwl/nutshell.md
+  - Trace the example · 8 min: quick-start.md
+  - Build, deploy and run · 3 min: usage-scenarios.md
+  - Optional reference:
+    - YAML in one minute: yaml.md
+    - Prepare the application: best-practice/application.md
+    - Prepare the package: best-practice/package.md
+    - How CWL fits EOAP: cwl/cwl-eoap.md
+  - History and standards:
+    - From pilots to wider use: background/background.md
+    - Previous OGC testbeds: background/previous-ogc-testbeds.md
+    - EO Applications Pilot: background/applications-pilot.md
+    - OGC Best Practice: background/eoap-best-practice.md
 
 copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>

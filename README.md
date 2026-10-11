@@ -1,29 +1,27 @@
-# Application Package and CWL as a solution for Earth Observation portability
+# EO Application Packages in 20 minutes
 
-The Application Package is a document that describes the data processing application by providing information about the parameters, software item, executable, dependencies and metadata.
+A short introduction to Earth Observation Application Packages (EOAP), using CWL v1.2 and a raster-bounds example. Students learn how job inputs, a workflow, a container command and output files fit together.
 
-The Application Package document ensures that the application is portable among all supporting execution and processing scenarios including the deployment in a Machine-To-Machine (M2M) scenario.
+Start with the [documentation](https://eoap.github.io/cwl-eoap/) or [lesson source](docs/index.md). The 20-minute route needs no installation: three minutes of context, four minutes on the building blocks, eight minutes tracing the example, three minutes on deployment, and a two-minute knowledge check.
 
-Most importantly, the Application Package information model allows the deployment of the application as an OGC API - Processes (OGC 18-062) compliant web service.
+The 2026 perspective includes ESA adoption through the EOEPCA initiative and EOEPCA+, with sources linked in the lesson. Historical OGC testbeds remain available as optional background. The three notebooks are longer, optional practical labs.
 
-The Application Package includes the following information:
+## Build the documentation
 
-* Reference to the executable block that implements the Application functionality
-* Description of its input/output interface
+```sh
+python -m pip install mkdocs-material mkdocs-mermaid2-plugin
+mkdocs serve
+# Check links and configuration:
+mkdocs build --strict
+```
 
-The Application Package uses:
-
-* the Common Workflow Language (CWL) *Workflow* specification as an encoding to describe the Application, its parameters and data flow
-* the CWL *CommandLineTool* specification to describe command-line tools, their runtime environments, their arguments and their invocation within containers.
-
-This repository includes the OGC activities that lead to the adoption of the CWL as the open standard for supporting the packaging of Earth Observation applications.
-
-The webpage of the documentation is https://eoap.github.io/cwl-eoap/. 
+The site includes the current job-file example directly from `notebooks/inputs.yaml`.
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 ## Typed CWL and PDE validation
 
-Application packages use CWL v1.2, embedded URI records, described ports and
+Application packages use CWL v1.2, shared remote URI schemas, described ports and
 Schema.org repository/version/license/author metadata. Generate and validate
 standalone documentation with `python scripts/cwl-docs.py --validate`.
 The PDE deployment and executable lab tasks are in the sibling
