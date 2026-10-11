@@ -1,0 +1,39 @@
+name: Notebook acceptance
+on:
+  push:
+    branches: [main, develop, feature/pde-typed-cwl]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install Podman and the locked Python environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y podman
+          uv venv --python 3.12 .venv
+          uv pip sync --python .venv/bin/python --require-hashes requirements-notebooks.txt
+          .venv/bin/python -m ipykernel install --user --name cwl_env --display-name 'Python (cwl-eoap)'
+          .venv/bin/python -m bash_kernel.install
+          uv pip check --python .venv/bin/python
+      - name: Validate standalone CWL and generated Markdown
+        run: .venv/bin/python scripts/cwl-docs.py --validate --output acceptance-results/cwl-docs
+      - name: Execute all three notebooks with real EO inputs
+        run: |
+          source .venv/bin/activate
+          python scripts/run-notebooks.py --workspace "$GITHUB_WORKSPACE" --notebooks-dir notebooks --python-kernel cwl_env --output acceptance-results/notebooks
+      - name: Build the documentation strictly
+        run: |
+          uv run --no-project --python 3.12 --with mkdocs-material --with mkdocs-mermaid2-plugin mkdocs build --strict --site-dir acceptance-results/site
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: acceptance-${{ github.sha }}
+          path: acceptance-results/
+          if-no-files-found: warn

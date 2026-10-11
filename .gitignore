@@ -1,3 +1,5 @@
 *.tif
 __pycache__
 app.py 
+.ipynb_checkpoints
+.venv/
