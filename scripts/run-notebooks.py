@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import shlex
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
@@ -55,6 +56,13 @@ def main():
         language = notebook.metadata.get("kernelspec", {}).get("language", "").lower()
         if kernel == "python3" or language == "python":
             kernel = args.python_kernel
+        # Bash startup files may activate the editor's old environment.
+        # Restore the environment selected by the acceptance invocation.
+        if language in ("bash", "shell") and os.environ.get("VIRTUAL_ENV"):
+            activation = Path(os.environ["VIRTUAL_ENV"]) / "bin" / "activate"
+            notebook.cells.insert(0, nbformat.v4.new_code_cell(
+                "source " + shlex.quote(str(activation))
+            ))
         target = output / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         print(f"[{index}/{len(notebooks)}] Running {relative} (kernel: {kernel})", flush=True)
