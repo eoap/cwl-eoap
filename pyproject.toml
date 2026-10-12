@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eoap-cwl-eoap"
+description = "CWL course and typed STAC band cropping command"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "CC-BY-SA-4.0"
+keywords = []
+classifiers = ["Development Status :: 4 - Beta", "Programming Language :: Python", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: Implementation :: CPython", "Programming Language :: Python :: Implementation :: PyPy"]
+dependencies = ["rasterio==1.5.2", "click==8.5.0", "pystac==1.15.2", "loguru==0.7.3", "pyproj==3.8.0", "shapely==2.2.0"]
+version = "1.0.0"
+
+[[project.authors]]
+name = "Fabrice Brito"
+email = "info@terradue.com"
+
+[[project.authors]]
+name = "Simone Tripodi"
+email = "info@terradue.com"
+
+[project.urls]
+Documentation = "https://eoap.github.io/cwl-eoap/"
+Source = "https://github.com/eoap/cwl-eoap"
+Issues = "https://github.com/eoap/cwl-eoap/issues"
+
+[project.scripts]
+crop-stac-band = "cwl_eoap.crop:crop"
+
+[tool.hatch.envs.test]
+template = "dev"
+
+[tool.hatch.envs.test.scripts]
+test = ["bootstrap", "pytest -q {args}"]
+
+[tool.hatch.envs.default]
+template = "dev"
+skip-install = false
+pre-install-commands = ["uv pip install --require-hashes -r requirements/development.txt"]
+post-install-commands = ["uv pip install --no-deps --no-build-isolation -e ."]
+
+[tool.hatch.envs.dev]
+skip-install = true
+installer = "uv"
+post-install-commands = ["uv pip install --require-hashes -r requirements/development.txt", "uv pip install --no-deps --no-build-isolation -e ."]
+template = "dev"
+python = "3.12"
+
+[tool.hatch.envs.dev.scripts]
+bootstrap = ["uv pip install --require-hashes -r requirements/development.txt", "uv pip install --no-deps --no-build-isolation -e ."]
+check = ["bootstrap", "format-check", "lint-check", "typecheck", "security"]
+format-check = "ruff format --check src app.py tests"
+lint-check = "ruff check src app.py tests"
+typecheck = "mypy src app.py"
+security = "bandit -r src app.py -ll"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cwl_eoap"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"app.py" = "app.py"
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/app.py", "/README.md", "/LICENSE.md", "/pyproject.toml", "/Dockerfile", "/requirements", "/scripts", "/notebooks", "/tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "C4", "SIM", "C90"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.mypy]
+ignore_missing_imports = true
+strict = true

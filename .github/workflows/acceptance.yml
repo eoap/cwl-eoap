@@ -18,7 +18,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y podman
           uv venv --python 3.12 .venv
-          uv pip sync --python .venv/bin/python --require-hashes requirements-notebooks.txt
+          uv pip sync --python .venv/bin/python --require-hashes requirements/development.txt
+          uv pip install --python .venv/bin/python --no-deps --no-build-isolation -e .
+          .venv/bin/hatch run dev:check
+          .venv/bin/hatch run test:test
           .venv/bin/python -m ipykernel install --user --name cwl_env --display-name 'Python (cwl-eoap)'
           .venv/bin/python -m bash_kernel.install
           uv pip check --python .venv/bin/python
@@ -30,7 +33,7 @@ jobs:
           python scripts/run-notebooks.py --workspace "$GITHUB_WORKSPACE" --notebooks-dir notebooks --python-kernel cwl_env --output acceptance-results/notebooks
       - name: Build the documentation strictly
         run: |
-          uv run --no-project --python 3.12 --with mkdocs-material --with mkdocs-mermaid2-plugin mkdocs build --strict --site-dir acceptance-results/site
+          .venv/bin/mkdocs build --strict --site-dir acceptance-results/site
       - uses: actions/upload-artifact@v4
         if: always()
         with:

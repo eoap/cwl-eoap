@@ -1,0 +1,6 @@
+rasterio==1.5.2
+click==8.5.0
+pystac==1.15.2
+loguru==0.7.3
+pyproj==3.8.0
+shapely==2.2.0

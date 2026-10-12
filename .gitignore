@@ -3,3 +3,11 @@ __pycache__
 app.py 
 .ipynb_checkpoints
 .venv/
+
+.hatch/
+dist/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+
+!/app.py

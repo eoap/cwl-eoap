@@ -76,3 +76,20 @@ Notebook cells deliberately generate files and build local teaching containers.
 Start acceptance from a clean checkout of the intended release commit. Release
 promotion requires successful acceptance of that commit; the CWL currently
 identifies the module version as `1.0.0`.
+
+## Hatch package and Rocky processing runtime
+
+The course now distributes its taught crop implementation in a Hatch wheel
+with the `crop-stac-band` command and the compatible `python -m app` entry point.
+Both container notebooks build the root Dockerfile from the root checkout;
+their generated build instructions no longer introduce a separate legacy image.
+Rasterio's `rio` CLI and crop processing share the accepted, hash-locked Python
+3.12 environment.
+
+Run `hatch run dev:check` and `hatch run test:test`. Fresh environments bootstrap
+`requirements/development.txt` with uv and install the course without resolving
+its dependencies again. The two-stage Rocky 10.1 runtime installs only the
+locked dependencies and wheel, verifies them, runs as UID/GID 2000 and removes
+venv pip. New model notebook and immutable-artifact acceptance remains required
+before promoting a new release. Previous notebook acceptance above describes
+the earlier runtime, not this new feature snapshot.

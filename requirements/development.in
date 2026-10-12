@@ -1,0 +1,12 @@
+-r runtime.in
+-r ../requirements-notebooks.in
+hatch==1.18.1
+hatchling>=1.27,<2
+uv
+editables
+pytest
+ruff
+mypy
+bandit
+mkdocs-material
+mkdocs-mermaid2-plugin
