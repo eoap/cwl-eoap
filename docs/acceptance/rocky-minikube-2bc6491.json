@@ -1,0 +1,16 @@
+{
+  "processing_commit": "2bc6491f52da731066aeec367549903ed54ba989",
+  "validation": "clean checkout on Minikube AMD64",
+  "notebooks": [
+    "01 Command line.ipynb",
+    "02 Container.ipynb",
+    "03 Package.ipynb"
+  ],
+  "all_notebooks_passed": true,
+  "real_remote_eo_data": true,
+  "package_unit_tests": 2,
+  "quality_gates_passed": true,
+  "processing_images": "built by container notebooks from root Dockerfile and the clean source",
+  "results_directory": "/workspace/lab-results/cwl-rocky-2bc6491/20261012T001722454865Z",
+  "published_candidate_acceptance": false
+}
