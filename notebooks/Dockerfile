@@ -6,6 +6,7 @@ ENV LANG="C.UTF-8" LC_ALL="C.UTF-8"
 # Refresh trust and isolate Python packages from the distro-managed interpreter.
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates g++ gdb make jq python3-venv && \
+    sed -i '/^[#!]*mozilla\/emSign_ECC_Root_CA_-_G3\.crt$/s/^[#!]*/!/' /etc/ca-certificates.conf && \
     update-ca-certificates && \
     rm -rf /var/lib/apt/lists/* && \
     python3 -m venv /opt/venv
