@@ -31,7 +31,7 @@ jobs:
       - name: Build the documentation strictly
         run: |
           uv run --no-project --python 3.12 --with mkdocs-material --with mkdocs-mermaid2-plugin mkdocs build --strict --site-dir acceptance-results/site
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: acceptance-${{ github.sha }}
