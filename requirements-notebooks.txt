@@ -4,10 +4,6 @@ affine==3.0.1 \
     --hash=sha256:cda3b303325e7bf2bf34817e68753a0d1c4cacbdd451fe67c4878dc2ecbaa540 \
     --hash=sha256:e1b3c38c5d4d3ef5024a182a6d1bf1e0c51ab221825781c741aeb4d0c079a7e2
     # via rasterio
-appnope==1.0.0 \
-    --hash=sha256:685db59cb6043c3c2e528adc0b3bce3a5f8d09bcf7492c6ea650d1b7421f3c49 \
-    --hash=sha256:6fe0c04218aab65c54c4ff81638cdbf848d89f5653b74d68638a137f200dd16e
-    # via ipykernel
 argcomplete==3.7.2 \
     --hash=sha256:6029205678bdd9c1c728a155f5f9ecf5812393f969eef58807641a2bc2aa5b19 \
     --hash=sha256:aad8b69a0b9969edb62db0d1752354c0d50717b10e0cbb00e2a958381b9fc6b9
@@ -30,10 +26,12 @@ bash-kernel==0.10.0 \
     --hash=sha256:2ed5a0a416c418d1d751e71505bd6c889e12157444b50c4287a685da775c28ca \
     --hash=sha256:da28513230f5307c7a49e87352366304dc52b66faa207d6caed1b2bdec03c1fa
     # via -r requirements-notebooks.in
-cachecontrol==0.14.4 \
+cachecontrol[filecache]==0.14.4 \
     --hash=sha256:b7ac014ff72ee199b5f8af1de29d60239954f223e948196fa3d84adaffc71d2b \
     --hash=sha256:e6220afafa4c22a47dd0badb319f84475d79108100d04e26e8542ef7d3ab05a1
-    # via schema-salad
+    # via
+    #   cachecontrol
+    #   schema-salad
 certifi==2026.10.23 \
     --hash=sha256:a9895e6e2758b371e0545e321a3a8fd1fcfd9829ada8824a936dfb16aaaf36cd \
     --hash=sha256:e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1
@@ -242,9 +240,9 @@ cwl-utils==0.45 \
     --hash=sha256:5883f39a0f2870a2fae550de1fdab3145286f1280fb099841f50ccbc9866e5f4 \
     --hash=sha256:cfcf13ca4a8d068e22b5d53962f5313dd1cb374a697854e24f0486a5ef38c3f8
     # via cwltool
-cwltool==3.3.20260925135507 \
-    --hash=sha256:296c3952e1753486fa51117fb599fdfacea10193e0c50b83a33cbc821f88c720 \
-    --hash=sha256:e8df93657d6c8ade5a0967d0ed42501bdb67dd15e00c8a664f1212c3887d74a1
+cwltool==3.3.20261106131234 \
+    --hash=sha256:35c48a80758380b409b933118fc5c806111b0c064726c8c6fa651f9c9dc37cb8 \
+    --hash=sha256:a69be4f0f90a16e9ebb2674844610528a76811c4725e8c457138c98e9c6edde2
     # via -r requirements-notebooks.in
 debugpy==1.8.22 \
     --hash=sha256:0c1104233340196e5cbf5514e7dfdbb98968e730cfd7fdd6f3d72a082be838a9 \
@@ -1713,7 +1711,6 @@ typing-extensions==4.16.0 \
     #   cwl-utils
     #   cwltool
     #   jupyter-client
-    #   referencing
 tzdata==2026.6 \
     --hash=sha256:0a10eec6e13ef16b627fabed9a5f2ba61a62b1c67f327305f4e7e412a70b4aec \
     --hash=sha256:85d2cd9c09f81f0bb29db27759fc83af4f1e620efb814f8c5bf8b4cc4feece6d
